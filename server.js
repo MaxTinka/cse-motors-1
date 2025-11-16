@@ -1,56 +1,48 @@
-const express = require('express');
-const path = require('path');
-require('dotenv').config();
+/* ******************************************
+ * This server.js file is the primary file of the 
+ * application. It is used to control the project.
+ *******************************************/
+/* ***********************
+ * Require Statements
+ *************************/
+const express = require("express")
+const env = require("dotenv").config()
+const app = express()
+const static = require("./routes/static")
+const expressLayouts = require("express-ejs-layouts")
 
-const app = express();
-const PORT = process.env.PORT || 5500;
 
-// Import routes
-const inventoryRoutes = require('./routes/inventoryRoutes');
+/* ***********************
+ * View Engine and Templates
+ *************************/
+app.set("view engine", "ejs")
+app.use(expressLayouts)
+app.set("layout", "./layouts/layout") // not at views root
 
-// Set EJS as templating engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+/* ***********************
+ * Routes
+ *************************/
+app.use(static)
 
-// MVC Routes
-app.use('/inventory', inventoryRoutes);
+/* ***********************
+ * Index route
+ *************************/
+app.get("/", function(req, res) {
+  res.render("index", { title: "Welcome" })
+})
 
-// Home route
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'CSE Motors Uganda - Quality Vehicles',
-        page: 'home',
-        lastUpdated: new Date().toLocaleDateString('en-UG', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        })
-    });
-});
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).render('error', {
-        title: 'Server Error - CSE Motors',
-        message: 'Something went wrong!'
-    });
-});
+/* ***********************
+ * Local Server Information
+ * Values from .env (environment) file
+ *************************/
+const port = process.env.PORT
+const host = process.env.HOST
 
-// 404 handler
-app.use((req, res) => {
-    res.status(404).render('error', {
-        title: 'Page Not Found - CSE Motors',
-        message: 'The page you are looking for does not exist.'
-    });
-});
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`CSE Motors Uganda server running on http://localhost:${PORT}`);
-});
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
+app.listen(port, () => {
+  console.log(`app listening on ${host}:${port}`)
+})
