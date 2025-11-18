@@ -1,82 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %> - CSE Motors</title>
-  <link rel="stylesheet" href="/css/styles.css" media="screen">
-</head>
-<body>
+<main class="home">
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <h1><a class="cse" href="#">CSE Motors</a></h1>
-    <a class="my-account" href="#">My Account</a>
-  </header>
+  <!-- INTRO / Vehicle Section -->
+  <section class="intro">
+    <h2>Welcome to CSE Motors!</h2>
 
-  <!-- NAVIGATION -->
-  <nav class="main-nav">
+    <div class="delorean-section">
+      <div class="delorean-info">
+        <h3 class="highlight"><%= vehicle.name %></h3>
+        <ul>
+          <% vehicle.features.forEach(function(feature) { %>
+            <li><%= feature %></li>
+          <% }) %>
+        </ul>
+        <a href="<%= vehicle.ctaLink %>" class="btn">
+          <img src="<%= vehicle.ctaImg %>" alt="Own Today">
+        </a>
+      </div>
+      <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <h3><%= vehicle.name %> Reviews</h3>
     <ul>
-      <% navLinks.forEach(function(link) { %>
-        <li>
-          <a href="<%= link.href %>" class="<%= link.active ? 'active' : '' %>"><%= link.text %></a>
-        </li>
+      <% reviews.forEach(function(review) { %>
+        <li>"<%= review.text %>" (<%= review.rating %>/5)</li>
       <% }) %>
     </ul>
-  </nav>
+  </section>
 
-  <!-- MAIN CONTENT -->
-  <main class="home">
-
-    <!-- INTRO / Vehicle Section -->
-    <section class="intro">
-      <h2>Welcome to CSE Motors!</h2>
-
-      <div class="delorean-section">
-        <div class="delorean-info">
-          <h3 class="highlight"><%= vehicle.name %></h3>
-          <ul>
-            <% vehicle.features.forEach(function(feature) { %>
-              <li><%= feature %></li>
-            <% }) %>
-          </ul>
-          <a href="<%= vehicle.ctaLink %>" class="btn">
-            <img src="<%= vehicle.ctaImg %>" alt="Own Today">
-          </a>
+  <!-- UPGRADES -->
+  <section class="upgrades">
+    <h3><%= vehicle.name %> Upgrades</h3>
+    <div class="upgrade-grid">
+      <% upgrades.forEach(function(upgrade) { %>
+        <div class="upgrade-item">
+          <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
+          <a href="<%= upgrade.link %>"><%= upgrade.name %></a>
         </div>
-        <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
-      </div>
-    </section>
+      <% }) %>
+    </div>
+  </section>
 
-    <!-- REVIEWS -->
-    <section class="reviews">
-      <h3><%= vehicle.name %> Reviews</h3>
-      <ul>
-        <% reviews.forEach(function(review) { %>
-          <li>"<%= review.text %>" (<%= review.rating %>/5)</li>
-        <% }) %>
-      </ul>
-    </section>
-
-    <!-- UPGRADES -->
-    <section class="upgrades">
-      <h3><%= vehicle.name %> Upgrades</h3>
-      <div class="upgrade-grid">
-        <% upgrades.forEach(function(upgrade) { %>
-          <div class="upgrade-item">
-            <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
-            <a href="<%= upgrade.link %>"><%= upgrade.name %></a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <p class="copyright">© 2025 - CSE 340 App | Max Tinka</p>
-  </footer>
-
-</body>
-</html>
+</main>
