@@ -1,3 +1,17 @@
+/* --- (Mobile First) --- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f0f0f0;
+}
+
 /* --- Site Header Styles --- */
 
 .site-header {
@@ -5,7 +19,7 @@
     justify-content: space-between; /* Left and right alignment */
     align-items: center;
     padding: 10px 20px;
-    background-color: #333;       /* Optional: dark header background */
+    background-color: #333;
     color: white;
     border-bottom: 5px solid #00bcd4;
 }
@@ -22,4 +36,249 @@
     font-weight: bold;
     text-decoration: underline;
     color: white;
+}
+
+/* --- Main Navigation Styles --- */
+
+.main-nav {
+    background-color: #333;
+    padding: 0 10px;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: flex-start; /* Horizontal alignment */
+    align-items: center;
+    gap: 20px; /* Space between links */
+}
+
+.main-nav li {
+    margin: 0;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 5px;
+    display: block;
+    transition: 0.3s;
+}
+
+.main-nav a.active {
+    border-radius: 10px;
+    color: white;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+}
+
+/* --- Page Content / Layout --- */
+
+.home {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: white;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    padding-top: 10px;
+}
+
+h3 {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+    color: black;
+}
+
+.highlight {
+    color: #171818;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+/* --- Delorean Section --- */
+
+.delorean-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.delorean-info {
+    order: 2;
+    padding-bottom: 10px;
+}
+
+/* Make Delorean name and features blue */
+.delorean-info h3,
+.delorean-info ul {
+    color: #007bff;
+}
+
+.delorean-info ul {
+    background-color: whitesmoke;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.delorean-section img {
+    max-width: 100%;
+    height: auto;
+    order: 1;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* --- Upgrades Section --- */
+
+.upgrades h3 {
+    margin-top: 1em;
+}
+
+.upgrade-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.upgrade-item {
+    text-align: center;
+    background-color: rgb(223, 215, 215);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.upgrade-item img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.upgrade-item a {
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 0.9em;
+    display: block;
+}
+
+/* --- Reviews Section --- */
+
+.reviews ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.reviews {
+    order: 3;
+}
+
+.upgrades {
+    order: 4;
+}
+
+/* --- Footer Styles --- */
+
+footer {
+    width: 100%;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    font-size: large;
+    font-weight: bolder;
+    padding: 15px;
+    text-align: center;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.85em;
+    color: white;
+}
+
+/* --- Tablet / Desktop Styles --- */
+
+@media (min-width: 768px) {
+    .home {
+        max-width: 800px;
+        padding: 30px;
+    }
+
+    .delorean-section {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .delorean-info {
+        z-index: 1;
+        width: 40%;
+        padding-right: 20px;
+    }
+
+    .delorean-section img {
+        order: 2;
+        width: 60%;
+        margin-bottom: 0;
+    }
+
+    .home {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 30px;
+    }
+
+    .intro {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .reviews {
+        grid-column: 2 / 3;
+        grid-row: 2;
+        padding-left: 20px;
+        margin-bottom: 0;
+    }
+
+    .upgrades {
+        grid-column: 1 / 2;
+        grid-row: 2;
+        padding-right: 10px;
+        margin-bottom: 0;
+    }
+
+    .upgrade-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }

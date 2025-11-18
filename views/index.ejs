@@ -1,46 +1,72 @@
-<main class="home">
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/head") %>
 
-  <!-- INTRO / Vehicle Section -->
-  <section class="intro">
-    <h2>Welcome to CSE Motors!</h2>
+<body>
 
-    <div class="delorean-section">
-      <div class="delorean-info">
-        <h3 class="highlight"><%= vehicle.name %></h3>
-        <ul>
-          <% vehicle.features.forEach(function(feature) { %>
-            <li><%= feature %></li>
-          <% }) %>
-        </ul>
-        <a href="<%= vehicle.ctaLink %>" class="btn">
-          <img src="<%= vehicle.ctaImg %>" alt="Own Today">
-        </a>
-      </div>
-      <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
-    </div>
-  </section>
+  <!-- HEADER -->
+  <header class="site-header">
+    <h1><a class="cse" href="#">CSE Motors</a></h1>
+    <a class="my-account" href="#">My Account</a>
+  </header>
 
-  <!-- REVIEWS -->
-  <section class="reviews">
-    <h3><%= vehicle.name %> Reviews</h3>
+  <!-- NAVIGATION -->
+  <nav class="main-nav">
     <ul>
-      <% reviews.forEach(function(review) { %>
-        <li>"<%= review.text %>" (<%= review.rating %>/5)</li>
+      <% navLinks.forEach(function(link) { %>
+        <li>
+          <a href="<%= link.href %>" class="<%= link.active ? 'active' : '' %>">
+            <%= link.text %>
+          </a>
+        </li>
       <% }) %>
     </ul>
-  </section>
+  </nav>
 
-  <!-- UPGRADES -->
-  <section class="upgrades">
-    <h3><%= vehicle.name %> Upgrades</h3>
-    <div class="upgrade-grid">
-      <% upgrades.forEach(function(upgrade) { %>
-        <div class="upgrade-item">
-          <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
-          <a href="<%= upgrade.link %>"><%= upgrade.name %></a>
+  <!-- MAIN CONTENT -->
+  <main class="home">
+    <section class="intro">
+      <h2>Welcome to CSE Motors!</h2>
+
+      <div class="delorean-section">
+        <div class="delorean-info">
+          <h3 class="highlight"><%= vehicle.name %></h3>
+          <ul>
+            <% vehicle.features.forEach(function(feature) { %>
+              <li><%= feature %></li>
+            <% }) %>
+          </ul>
+          <a href="<%= vehicle.ctaLink %>" class="btn">
+            <img src="<%= vehicle.ctaImg %>" alt="Own Today">
+          </a>
         </div>
-      <% }) %>
-    </div>
-  </section>
+        <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
+      </div>
+    </section>
 
-</main>
+    <section class="reviews">
+      <h3><%= vehicle.name %> Reviews</h3>
+      <ul>
+        <% reviews.forEach(function(review) { %>
+          <li>"<%= review.text %>" (<%= review.rating %>/5)</li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section class="upgrades">
+      <h3><%= vehicle.name %> Upgrades</h3>
+      <div class="upgrade-grid">
+        <% upgrades.forEach(function(upgrade) { %>
+          <div class="upgrade-item">
+            <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
+            <a href="<%= upgrade.link %>"><%= upgrade.name %></a>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+
+  <%- include("../partials/footer") %>
+
+</body>
+</html>
