@@ -9,109 +9,98 @@
 body {
     font-family: Arial, sans-serif;
     color: #333;
-    background-color: #f0f0f0; /* Assuming the background is light grey outside the main container */
+    background-color: #f0f0f0;
 }
 
 /* --- Site Header Styles --- */
 
 .site-header {
-    /* Use Flexbox to align items horizontally */
     display: flex;
-    /* Space out the logo and account link */
     justify-content: space-between;
-    /* Vertically center the items */
-    align-items:initial;
-    color: white; /* Text color */
-    padding: 5px 10px; /* Padding inside the header */
-    border-bottom: 5px solid #00bcd4; /* Teal border at the bottom */
+    align-items: center;
+    color: white;
+    padding: 5px 10px;
+    border-bottom: 5px solid #00bcd4;
 }
 
 .site-header h1 {
-    
     margin: 0;
     font-size: 1.5em;
     font-weight: normal;
 }
 
 .site-header a {
-    /* Set text color to white */
-    color:black;
+    color: black;
 }
 
 .my-account {
-    /* Style the MY ACCOUNT link */
     font-size: 0.8em;
     font-weight: bold;
     text-decoration: underline;
     text-transform: uppercase;
 }
-.cse{
-     /* Remove underline from link */
+
+.cse {
     text-decoration: none;
 }
 
 /* --- Main Navigation Styles --- */
 
 .main-nav {
-    background-color: #333; /* Dark gray background */
+    background-color: #333;
     margin: 0 auto;
 }
 
 .main-nav ul {
-    /* Use Flexbox to arrange list items horizontally */
     display: flex;
-    /* Remove padding/margin and list styles */
     list-style-type: none;
-    padding: 0;
+    padding: 5px 10px;
     margin: 0;
-    /* Ensure the list items fill the entire width of the nav bar */
-    justify-content: space-around;
+    justify-content: flex-start; /* <-- updated */
 }
 
 .main-nav li {
-    /*  list item flexible and equally sized */
-    flex-grow: 1;
-    text-align: center; 
+    margin-right: 1.2rem; /* spacing between items */
 }
 
 .main-nav a {
-    
     display: block;
-    padding: 10px 5px; /* Vertical and horizontal padding */
+    padding: 10px 5px;
     text-decoration: none;
-    color: white; /* Default link text color */
+    color: white;
     font-size: 0.9em;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.2s; 
+    transition: background-color 0.2s;
 }
 
-/* Highlight for the currently active page (Home) */
+/* Active Item */
 .main-nav a.active {
-    border-radius:10px ;
-    color: white; 
+    border-radius: 10px;
+    color: white;
 }
 
-/* Hover effect for all links */
+/* Hover */
 .main-nav a:hover,
 .main-nav a:focus {
-    background-color: white; 
-    color: black; 
-    border-radius:10px ;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
 }
 
+/* --- Page Content / Layout --- */
 
 .home {
-    max-width: 500px; /* Max width for mobile-first design */
+    max-width: 500px;
     margin: 0 auto;
     padding: 10px;
-    background-color: white; /* White background for the content area */
+    background-color: white;
 }
 
 h2 {
     font-size: 1.5em;
     margin-bottom: 0.5em;
-    padding-top: 10px; /* Adding some space above the main heading */
+    padding-top: 10px;
 }
 
 h3 {
@@ -125,33 +114,31 @@ h3 {
 }
 
 ul {
-    list-style-type: none; /* Removing bullet points */
-    margin-left: 0;
+    list-style-type: none;
     padding-left: 0;
     margin-bottom: 1em;
 }
 
-/* Sections */
 section {
     margin-bottom: 2em;
 }
 
-/* --- Delorean Info (Intro Section) --- */
+/* --- Delorean Section --- */
 
 .delorean-section {
     display: flex;
-    flex-direction: column; /* Stack info and image vertically on mobile */
+    flex-direction: column;
     align-items: flex-start;
 }
 
 .delorean-info {
-    order:2 ; /* Put info below the image initially */
+    order: 2;
     padding-bottom: 10px;
 }
 
 .delorean-info ul {
-    color: black; 
-    background-color:whitesmoke;
+    color: black;
+    background-color: whitesmoke;
     font-weight: bold;
     margin-top: 5px;
     padding: 5px;
@@ -160,11 +147,10 @@ section {
 .delorean-section img {
     max-width: 100%;
     height: auto;
-    order: 1; /* Image first on mobile */
+    order: 1;
     margin-bottom: 15px;
 }
 
-/* "Own Today" Button */
 .btn {
     display: inline-block;
     padding: 8px 15px;
@@ -180,8 +166,8 @@ section {
 
 .upgrade-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns on mobile */
-    gap: 10px; /* Space between grid items */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .upgrade-item {
@@ -193,28 +179,27 @@ section {
 
 .upgrade-item img {
     width: 100%;
-    max-width: 100px; 
+    max-width: 100px;
     height: auto;
-    display: block; /* Remove extra space below image */
-    margin: 0 auto 5px; /* Center image */
+    display: block;
+    margin: 0 auto 5px;
 }
 
 .upgrade-item a {
-    color: black; /* Link text color */
+    color: black;
     text-decoration: underline;
     font-weight: bold;
     font-size: 0.9em;
-    display: block; /* Make the link take full width */
+    display: block;
 }
 
 /* --- Reviews Section --- */
 
 .reviews ul {
-    list-style-type: disc; /* Use standard bullet points for reviews */
+    list-style-type: disc;
     margin-left: 20px;
 }
 
-/* Ensure sections are displayed clearly on mobile */
 .reviews {
     order: 3;
 }
@@ -226,45 +211,38 @@ section {
 /* --- Footer Styles --- */
 
 footer {
-    /* Ensures the footer spans the entire width */
     width: 100%;
-    /* Add space above the footer to separate it from content */
-    margin-top: 10px;  
-    background-color: Black;
-    color: white; 
+    margin-top: 10px;
+    background-color: black;
+    color: white;
     font-size: large;
     font-weight: bolder;
-    /* Padding above and below the text */
-    padding: 15px; 
-    /* Center the copyright text */
+    padding: 15px;
     text-align: center;
 }
 
 .copyright {
-    /* Reset margins for clean centering */
     margin: 0;
-    /* Smaller, less prominent text */
-    font-size: 0.85em; 
-    color: white; 
+    font-size: 0.85em;
+    color: white;
 }
 
-/* --- Tablet and Desktop Styles (Large Viewport) --- */
+/* --- Tablet / Desktop Styles --- */
 
 @media (min-width: 768px) {
     .home {
-        max-width: 800px; /* Wider content area for desktop */
+        max-width: 800px;
         padding: 30px;
     }
 
-    /* --- Intro Section (Desktop Layout) --- */
     .delorean-section {
-        flex-direction: row; /* Image and info side-by-side */
+        flex-direction: row;
         align-items: center;
         margin-bottom: 30px;
     }
 
     .delorean-info {
-       z-index: 1;
+        z-index: 1;
         width: 40%;
         padding-right: 20px;
     }
@@ -275,35 +253,32 @@ footer {
         margin-bottom: 0;
     }
 
-    /* --- Two Column Layout for Reviews and Upgrades --- */
-
     .home {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two main columns for content */
-        grid-template-rows: auto auto auto;
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 30px;
     }
 
     .intro {
-        grid-column: 1 / -1; /* Intro spans both columns */
+        grid-column: 1 / -1;
         grid-row: 1;
     }
 
     .reviews {
-        grid-column: 2 / 3; /* Reviews on the right */
+        grid-column: 2 / 3;
         grid-row: 2;
         padding-left: 20px;
         margin-bottom: 0;
     }
 
     .upgrades {
-        grid-column: 1 / 2; /* Upgrades on the left */
+        grid-column: 1 / 2;
         grid-row: 2;
         padding-right: 10px;
         margin-bottom: 0;
     }
 
-    /* Upgrades grid should have 2 columns inside its container on desktop */
     .upgrade-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
