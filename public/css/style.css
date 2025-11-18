@@ -1,49 +1,25 @@
-/* Header: logo on left, MY ACCOUNT on right */
+/* --- Site Header Styles --- */
+
 .site-header {
     display: flex;
-    justify-content: space-between; /* left-right alignment */
+    justify-content: space-between; /* Left and right alignment */
     align-items: center;
     padding: 10px 20px;
-    background-color: white;
+    background-color: #333;       /* Optional: dark header background */
+    color: white;
     border-bottom: 5px solid #00bcd4;
 }
 
-.site-header h1 a.cse {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 1.5em;
-}
-
-.site-header a.my-account {
-    text-decoration: underline;
-    color: black;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Main navigation below header */
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    padding: 5px 20px;
-    margin: 0;
-    gap: 15px; /* spacing between links */
-}
-
-.main-nav a {
-    text-decoration: none;
+.site-header h1 a {
     color: white;
+    text-decoration: none;
+    font-size: 1.5em;
     font-weight: bold;
-    padding: 8px 12px;
-    text-transform: uppercase;
-    background-color: #333;
-    border-radius: 5px;
-    transition: all 0.2s;
 }
 
-.main-nav a:hover,
-.main-nav a:focus {
-    background-color: white;
-    color: black;
+.my-account {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
 }

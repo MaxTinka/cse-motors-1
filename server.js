@@ -1,6 +1,5 @@
 /* ******************************************
- * This server.js file is the primary file of the 
- * application. It is used to control the project.
+ * server.js - Primary file of the CSE Motors application
  *******************************************/
 
 /* ***********************
@@ -10,35 +9,34 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
-const static = require("./routes/static");
+const staticRoutes = require("./routes/static"); // your static routes
 
 /* ***********************
- * View engine templates
+ * View Engine Setup
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // not at views root
+app.set("layout", "./layouts/layout"); // layout file inside layouts folder
 
 /* ***********************
- * Serve static files
+ * Serve Static Files
  *************************/
 app.use(express.static("public"));
 
 /* ***********************
- * Routes
+ * Navigation Links (Reusable)
  *************************/
-app.use(static);
-
-// Navigation links
 const navLinks = [
-  { text: 'Home', href: '/', active: true },
+  { text: 'Home', href: '/', active: false },
   { text: 'Custom', href: '/custom', active: false },
   { text: 'Sedan', href: '/sedan', active: false },
   { text: 'SUV', href: '/suv', active: false },
   { text: 'Truck', href: '/truck', active: false }
 ];
 
-// Vehicle Data
+/* ***********************
+ * Vehicle, Reviews, and Upgrades Data
+ *************************/
 const vehicle = {
   name: 'DMC Delorean',
   features: ['3 Cup holders', 'Superman doors', 'Fuzzy dice!'],
@@ -47,7 +45,6 @@ const vehicle = {
   ctaImg: '/images/site/own_today.png'
 };
 
-// Reviews Data
 const reviews = [
   { text: "So fast it's almost like traveling in time.", rating: 4 },
   { text: "Coolest ride on the road.", rating: 4 },
@@ -56,7 +53,6 @@ const reviews = [
   { text: "'80s livin and I love it!", rating: 5 }
 ];
 
-// Upgrades Data
 const upgrades = [
   { name: 'Flux Capacitor', image: '/images/upgrades/flux-cap.png', alt: 'Flux Capacitor', link: '#' },
   { name: 'Flame Decals', image: '/images/upgrades/flame.jpg', alt: 'Flame Decals', link: '#' },
@@ -64,27 +60,71 @@ const upgrades = [
   { name: 'Hub Caps', image: '/images/upgrades/hub-cap.jpg', alt: 'Hub Caps', link: '#' }
 ];
 
-//Index route
-app.get("/", function(req, res){
+/* ***********************
+ * Routes
+ *************************/
+// Include static routes
+app.use(staticRoutes);
+
+/**
+ * Helper function to set active link dynamically
+ */
+function setActiveLink(currentPath) {
+  return navLinks.map(link => ({
+    ...link,
+    active: link.href === currentPath
+  }));
+}
+
+// Home Page
+app.get("/", (req, res) => {
   res.render("index", {
     title: "Home",
-    navLinks: navLinks,
+    navLinks: setActiveLink('/'),
     vehicle: vehicle,
     reviews: reviews,
     upgrades: upgrades
   });
 });
 
+// Custom Page
+app.get("/custom", (req, res) => {
+  res.render("custom", {
+    title: "Custom",
+    navLinks: setActiveLink('/custom')
+  });
+});
+
+// Sedan Page
+app.get("/sedan", (req, res) => {
+  res.render("sedan", {
+    title: "Sedan",
+    navLinks: setActiveLink('/sedan')
+  });
+});
+
+// SUV Page
+app.get("/suv", (req, res) => {
+  res.render("suv", {
+    title: "SUV",
+    navLinks: setActiveLink('/suv')
+  });
+});
+
+// Truck Page
+app.get("/truck", (req, res) => {
+  res.render("truck", {
+    title: "Truck",
+    navLinks: setActiveLink('/truck')
+  });
+});
+
 /* ***********************
- * Local Server Information
- * Values from .env (environment) file
+ * Server Setup
  *************************/
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'localhost';
 
-/* ***********************
- * Log statement to confirm server operation
- *************************/
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`);
+  console.log(`CSE Motors app listening on ${host}:${port}`);
 });
