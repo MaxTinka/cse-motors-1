@@ -1,5 +1,4 @@
 /* --- (Mobile First) --- */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -13,7 +12,6 @@ body {
 }
 
 /* --- Site Header Styles --- */
-
 .site-header {
     display: flex;
     justify-content: space-between;
@@ -45,7 +43,6 @@ body {
 }
 
 /* --- Main Navigation Styles --- */
-
 .main-nav {
     background-color: #333;
     margin: 0 auto;
@@ -56,11 +53,11 @@ body {
     list-style-type: none;
     padding: 5px 10px;
     margin: 0;
-    justify-content: flex-start; /* <-- updated */
+    justify-content: flex-start;
 }
 
 .main-nav li {
-    margin-right: 1.2rem; /* spacing between items */
+    margin-right: 1.2rem;
 }
 
 .main-nav a {
@@ -71,7 +68,25 @@ body {
     font-size: 0.9em;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Hover underline effect */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+    width: 100%;
 }
 
 /* Active Item */
@@ -80,16 +95,7 @@ body {
     color: white;
 }
 
-/* Hover */
-.main-nav a:hover,
-.main-nav a:focus {
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-}
-
 /* --- Page Content / Layout --- */
-
 .home {
     max-width: 500px;
     margin: 0 auto;
@@ -124,7 +130,6 @@ section {
 }
 
 /* --- Delorean Section --- */
-
 .delorean-section {
     display: flex;
     flex-direction: column;
@@ -159,7 +164,6 @@ section {
 }
 
 /* --- Upgrades Section --- */
-
 .upgrades h3 {
     margin-top: 1em;
 }
@@ -185,31 +189,39 @@ section {
     margin: 0 auto 5px;
 }
 
+/* Hover underline for upgrades links */
 .upgrade-item a {
     color: black;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: bold;
     font-size: 0.9em;
     display: block;
+    position: relative;
+}
+
+.upgrade-item a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    transition: width 0.3s ease;
+}
+
+.upgrade-item a:hover::after,
+.upgrade-item a:focus::after {
+    width: 100%;
 }
 
 /* --- Reviews Section --- */
-
 .reviews ul {
     list-style-type: disc;
     margin-left: 20px;
 }
 
-.reviews {
-    order: 3;
-}
-
-.upgrades {
-    order: 4;
-}
-
 /* --- Footer Styles --- */
-
 footer {
     width: 100%;
     margin-top: 10px;
@@ -228,11 +240,14 @@ footer {
 }
 
 /* --- Tablet / Desktop Styles --- */
-
 @media (min-width: 768px) {
     .home {
         max-width: 800px;
         padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 30px;
     }
 
     .delorean-section {
@@ -251,13 +266,6 @@ footer {
         order: 2;
         width: 60%;
         margin-bottom: 0;
-    }
-
-    .home {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 20px;
-        row-gap: 30px;
     }
 
     .intro {
