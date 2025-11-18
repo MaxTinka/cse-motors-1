@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include("../partials/head") %>
+  <%- include("../partials/head") %>
 
 <body>
-    <div id ="wrapper">
-        <%- include("../partials/header") %>
-        <%- include("../partials/navigation") %>
+  <div id="wrapper">
 
-        <main>
-            <%- body %>
-        </main>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-top">
+        <div class="logo">CSE Motors</div>
+        <div class="account">MY ACCOUNT</div>
+      </div>
 
-        <%- include("../partials/footer") %>
-        </div>
-    
+      <!-- Navigation -->
+      <nav class="site-nav">
+        <ul>
+          <% navLinks.forEach(link => { %>
+            <li class="<%= link.active ? 'active' : '' %>">
+              <a href="<%= link.href %>"><%= link.text %></a>
+            </li>
+          <% }) %>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <%- body %>
+    </main>
+
+    <%- include("../partials/footer") %>
+
+  </div>
 </body>
 </html>

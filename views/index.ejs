@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("../partials/head") %>
+  <%- include("./partials/head") %>
 
 <body>
+    <div id="wrapper">
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <h1><a class="cse" href="#">CSE Motors</a></h1>
-    <a class="my-account" href="#">My Account</a>
-  </header>
+        <!-- Header Top -->
+        <header class="header-top">
+            <div class="logo">CSE Motors</div>
+            <div class="account">MY ACCOUNT</div>
+        </header>
 
-  <!-- NAVIGATION -->
-  <nav class="main-nav">
-    <ul>
-      <% navLinks.forEach(function(link) { %>
-        <li>
-          <a href="<%= link.href %>" class="<%= link.active ? 'active' : '' %>">
-            <%= link.text %>
-          </a>
-        </li>
-      <% }) %>
-    </ul>
-  </nav>
+        <!-- Navigation -->
+        <nav class="site-nav">
+            <ul>
+                <% navLinks.forEach(link => { %>
+                    <li class="<%= link.active ? 'active' : '' %>">
+                        <a href="<%= link.href %>"><%= link.text %></a>
+                    </li>
+                <% }) %>
+            </ul>
+        </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="home">
-    <section class="intro">
-      <h2>Welcome to CSE Motors!</h2>
+        <!-- Main Content -->
+        <main>
+            <!-- Vehicle Section -->
+            <section class="vehicle-container">
+                <h2><%= vehicle.name %></h2>
+                <ul class="vehicle-features">
+                    <% vehicle.features.forEach(feature => { %>
+                        <li><%= feature %></li>
+                    <% }) %>
+                </ul>
+                <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>" width="400">
+                <div>
+                    <a href="<%= vehicle.ctaLink %>">
+                        <img src="<%= vehicle.ctaImg %>" alt="Own Today">
+                    </a>
+                </div>
+            </section>
 
-      <div class="delorean-section">
-        <div class="delorean-info">
-          <h3 class="highlight"><%= vehicle.name %></h3>
-          <ul>
-            <% vehicle.features.forEach(function(feature) { %>
-              <li><%= feature %></li>
-            <% }) %>
-          </ul>
-          <a href="<%= vehicle.ctaLink %>" class="btn">
-            <img src="<%= vehicle.ctaImg %>" alt="Own Today">
-          </a>
-        </div>
-        <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>">
-      </div>
-    </section>
+            <!-- Reviews Section -->
+            <section class="reviews-container">
+                <h3><%= vehicle.name %> Reviews</h3>
+                <% reviews.forEach(review => { %>
+                    <div class="review">
+                        "<%= review.text %>" (<%= review.rating %>/5)
+                    </div>
+                <% }) %>
+            </section>
 
-    <section class="reviews">
-      <h3><%= vehicle.name %> Reviews</h3>
-      <ul>
-        <% reviews.forEach(function(review) { %>
-          <li>"<%= review.text %>" (<%= review.rating %>/5)</li>
-        <% }) %>
-      </ul>
-    </section>
+            <!-- Upgrades Section -->
+            <section class="upgrades-container">
+                <h3><%= vehicle.name %> Upgrades</h3>
+                <% upgrades.forEach(upgrade => { %>
+                    <div class="upgrade-card">
+                        <a href="<%= upgrade.link %>">
+                            <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
+                            <p><%= upgrade.name %></p>
+                        </a>
+                    </div>
+                <% }) %>
+            </section>
+        </main>
 
-    <section class="upgrades">
-      <h3><%= vehicle.name %> Upgrades</h3>
-      <div class="upgrade-grid">
-        <% upgrades.forEach(function(upgrade) { %>
-          <div class="upgrade-item">
-            <img src="<%= upgrade.image %>" alt="<%= upgrade.alt %>">
-            <a href="<%= upgrade.link %>"><%= upgrade.name %></a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-  </main>
+        <!-- Footer -->
+        <footer>
+            &copy; 2025 - CSE 340 App | Max Tinka
+        </footer>
 
-  <%- include("../partials/footer") %>
-
+    </div>
 </body>
 </html>
