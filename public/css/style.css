@@ -1,294 +1,49 @@
-/* --- (Mobile First) --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f0f0f0;
-}
-
-/* --- Site Header Styles --- */
+/* Header: logo on left, MY ACCOUNT on right */
 .site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* left-right alignment */
     align-items: center;
-    color: white;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    background-color: white;
     border-bottom: 5px solid #00bcd4;
 }
 
-.site-header h1 {
-    margin: 0;
-    font-size: 1.5em;
-    font-weight: normal;
-}
-
-.site-header a {
+.site-header h1 a.cse {
+    text-decoration: none;
     color: black;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
-.my-account {
-    font-size: 0.8em;
-    font-weight: bold;
+.site-header a.my-account {
     text-decoration: underline;
+    color: black;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
-.cse {
-    text-decoration: none;
-}
-
-/* --- Main Navigation Styles --- */
-.main-nav {
-    background-color: #333;
-    margin: 0 auto;
-}
-
+/* Main navigation below header */
 .main-nav ul {
     display: flex;
-    list-style-type: none;
-    padding: 5px 10px;
+    list-style: none;
+    padding: 5px 20px;
     margin: 0;
-    justify-content: flex-start;
-}
-
-.main-nav li {
-    margin-right: 1.2rem;
+    gap: 15px; /* spacing between links */
 }
 
 .main-nav a {
-    display: block;
-    padding: 10px 5px;
     text-decoration: none;
     color: white;
-    font-size: 0.9em;
     font-weight: bold;
+    padding: 8px 12px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-/* Hover underline effect */
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: white;
-    transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after,
-.main-nav a:focus::after {
-    width: 100%;
-}
-
-/* Active Item */
-.main-nav a.active {
-    border-radius: 10px;
-    color: white;
-}
-
-/* --- Page Content / Layout --- */
-.home {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: white;
-}
-
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-    padding-top: 10px;
-}
-
-h3 {
-    font-size: 1.25em;
-    margin-bottom: 0.5em;
-    color: black;
-}
-
-.highlight {
-    color: #171818;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 1em;
-}
-
-section {
-    margin-bottom: 2em;
-}
-
-/* --- Delorean Section --- */
-.delorean-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.delorean-info {
-    order: 2;
-    padding-bottom: 10px;
-}
-
-.delorean-info ul {
-    color: black;
-    background-color: whitesmoke;
-    font-weight: bold;
-    margin-top: 5px;
-    padding: 5px;
-}
-
-.delorean-section img {
-    max-width: 100%;
-    height: auto;
-    order: 1;
-    margin-bottom: 15px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 8px 15px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-/* --- Upgrades Section --- */
-.upgrades h3 {
-    margin-top: 1em;
-}
-
-.upgrade-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.upgrade-item {
-    text-align: center;
-    background-color: rgb(223, 215, 215);
-    padding: 10px;
+    background-color: #333;
     border-radius: 5px;
+    transition: all 0.2s;
 }
 
-.upgrade-item img {
-    width: 100%;
-    max-width: 100px;
-    height: auto;
-    display: block;
-    margin: 0 auto 5px;
-}
-
-/* Hover underline for upgrades links */
-.upgrade-item a {
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: white;
     color: black;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9em;
-    display: block;
-    position: relative;
-}
-
-.upgrade-item a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: black;
-    transition: width 0.3s ease;
-}
-
-.upgrade-item a:hover::after,
-.upgrade-item a:focus::after {
-    width: 100%;
-}
-
-/* --- Reviews Section --- */
-.reviews ul {
-    list-style-type: disc;
-    margin-left: 20px;
-}
-
-/* --- Footer Styles --- */
-footer {
-    width: 100%;
-    margin-top: 10px;
-    background-color: black;
-    color: white;
-    font-size: large;
-    font-weight: bolder;
-    padding: 15px;
-    text-align: center;
-}
-
-.copyright {
-    margin: 0;
-    font-size: 0.85em;
-    color: white;
-}
-
-/* --- Tablet / Desktop Styles --- */
-@media (min-width: 768px) {
-    .home {
-        max-width: 800px;
-        padding: 30px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 20px;
-        row-gap: 30px;
-    }
-
-    .delorean-section {
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 30px;
-    }
-
-    .delorean-info {
-        z-index: 1;
-        width: 40%;
-        padding-right: 20px;
-    }
-
-    .delorean-section img {
-        order: 2;
-        width: 60%;
-        margin-bottom: 0;
-    }
-
-    .intro {
-        grid-column: 1 / -1;
-        grid-row: 1;
-    }
-
-    .reviews {
-        grid-column: 2 / 3;
-        grid-row: 2;
-        padding-left: 20px;
-        margin-bottom: 0;
-    }
-
-    .upgrades {
-        grid-column: 1 / 2;
-        grid-row: 2;
-        padding-right: 10px;
-        margin-bottom: 0;
-    }
-
-    .upgrade-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
 }
